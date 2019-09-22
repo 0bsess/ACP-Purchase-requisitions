@@ -1,7 +1,6 @@
 package pe.upc.model.entity;
 
 import java.util.Date;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -88,8 +87,5 @@ public class Reserva {
 	}
 	public void setMoneyPrecioFinal(double moneyPrecioFinal) {
 		this.moneyPrecioFinal = moneyPrecioFinal;
-	}
-	
-	
-	
+	}	
 }

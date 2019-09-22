@@ -2,8 +2,6 @@ package pe.upc.model.repository;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,7 +31,6 @@ private static final long serialVersionUID = 4L;
 		em.remove(producto);
 	}
 	
-	
 	public List<Producto> findAll() throws Exception{
 		List<Producto> productos=new ArrayList<>();
 		
@@ -41,6 +38,5 @@ private static final long serialVersionUID = 4L;
 		productos=query.getResultList();
 		
 		return productos;
-	}
-	
+	}	
 }

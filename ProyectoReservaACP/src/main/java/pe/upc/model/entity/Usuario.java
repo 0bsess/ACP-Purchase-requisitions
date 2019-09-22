@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idUsuario;
+	private Long idUsuario;
 	
 	private String nameUsuario;
 	private String nameApPaterno;
@@ -20,10 +20,11 @@ public class Usuario {
 	private String email;
 	private String password;
 	private boolean flagAdmin;
-	public int getIdUsuario() {
+	
+	public Long getIdUsuario() {
 		return idUsuario;
 	}
-	public void setIdUsuario(int idUsuario) {
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 	public String getNameUsuario() {

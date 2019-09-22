@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title><ui:insert name="pageTitle">ACP</ui:insert></title>
+</h:head>
+
+<body>
+	<ui:insert name="header">
+		<h:form>
+			<p:menubar autoDisplay="false">
+				<p:submenu label="Mantenimiento" icon="ui-icon-pencil">
+					<p:menuitem icon="ui-icon-document" value="Ciudad"
+						url="/ciudad/list.xhtml" />
+					<p:menuitem icon="ui-icon-document" value="Paises"
+						url="/pais/list.xhtml" />
+					<p:menuitem icon="ui-icon-document" value="Unidades"
+						url="/unidad/list.xhtml" />
+					<p:menuitem icon="ui-icon-document" value="Usuarios"
+						url="/usuario/list.xhtml" />
+					<p:menuitem icon="ui-icon-document" value="Productos"
+						url="/producto/list.xhtml" />	
+					<p:menuitem icon="ui-icon-document" value="Reservas"
+						url="/reserva/list.xhtml" />	
+				</p:submenu>
+			</p:menubar>
+		</h:form>
+	</ui:insert>
+
+	<ui:insert name="content">
+
+	</ui:insert>
+
+
+	<ui:insert name="footer">
+		<div>Copyright © ACP, 2019. Todos los derechos reservados</div>
+	</ui:insert>
+</body>
+
+</html>

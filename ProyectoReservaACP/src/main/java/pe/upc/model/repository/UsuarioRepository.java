@@ -17,13 +17,13 @@ private static final long serialVersionUID = 5L;
 	@PersistenceContext(unitName="pwPU")
 	private EntityManager em;
 	
-	public int insert(Usuario usuario) throws Exception {
+	public Long insert(Usuario usuario) throws Exception {
 		em.persist(usuario);
 		return usuario.getIdUsuario();
 	}
 	
 	
-	public int update(Usuario usuario) throws Exception {
+	public Long update(Usuario usuario) throws Exception {
 		em.merge(usuario);
 		return usuario.getIdUsuario();
 	}
@@ -44,9 +44,8 @@ private static final long serialVersionUID = 5L;
 	}
 	
 //esta opcion nos puede servir para luego darle beneficios segun las historias de usuario y cambiar la contraseña 	
-	public Optional<Usuario> findById(int id) throws Exception{
+	public Optional<Usuario> findById(Long id) throws Exception{
 		Usuario usuarioFound;
-		
 		TypedQuery<Usuario> query=em.createQuery("FROM Usuario u WHERE u.id=?1",Usuario.class);
 		query.setParameter(1, id);
 		usuarioFound=query.getSingleResult();

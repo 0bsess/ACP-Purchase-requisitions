@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:growl id="men" />
+
+				<p:toolbar>
+					<f:facet name="right">
+						<p:commandButton value="Nuevo" icon="ui-icon-disk"
+						  action="#{usuarioController.newUsuario()}"
+						  ajax="false"/>
+						
+						 <p:commandButton value="Editar" icon="ui-icon-disk"
+						  action="#{usuarioController.editUsuario()}"
+						  ajax="false"/>
+					</f:facet>
+				</p:toolbar>
+
+
+				<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
+					<p:outputLabel value="Buscar Por Id:" for="txtSearchName" />
+					<p:inputText id="txtSearchName"  value="#{usuarioController.filterId}" />
+					<p:commandButton icon="ui-icon-search" 
+					  actionListener="#{usuarioController.searchUsuarioById}"
+					  update=":frm:datTabUsuarios :frm:men"/>
+				</p:panelGrid>
+
+				<p:dataTable id="datTabUsuarios"
+				
+					emptyMessage="No existen Usuarios registrados"
+					value="#{usuarioController.usuarios}" var="usuario"
+					
+					rowKey="#{usuario.idUsuario}"
+					selectionMode="single"
+					selection="#{usuarioController.usuarioSelect}"
+					
+					paginator="true" rows="10">
+					
+					<p:ajax event="rowSelect"
+						listener="#{usuarioController.selectUsuario}" />
+					
+					<p:column headerText="Id">
+						<p:outputLabel value="#{usuario.idUsuario}" />
+					</p:column>
+					
+					<p:column headerText="Nombre">
+						<p:outputLabel value="#{usuario.nameUsuario}" />
+					</p:column>
+					
+					<p:column headerText="Apellido paterno">
+						<p:outputLabel value="#{usuario.nameApPaterno}" />
+					</p:column>
+						<p:column headerText="Apellido materno">
+						<p:outputLabel value="#{usuario.nameApMaterno}" />
+					</p:column>
+						<p:column headerText="Nª Documento">
+						<p:outputLabel value="#{usuario.idDocumento}" />
+					</p:column>
+	
+						<p:column headerText="Nª Telefono">
+						<p:outputLabel value="#{usuario.phone}" />
+					</p:column>
+	
+						<p:column headerText="Email">
+						<p:outputLabel value="#{usuario.email}" />
+					</p:column>
+		
+						<p:column headerText="Password">
+						<p:outputLabel value="#{usuario.password}" />
+					</p:column>
+
+						<p:column headerText="Flag Admin">
+						<p:outputLabel value="#{usuario.flagAdmin}" />
+					</p:column>								
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
