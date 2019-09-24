@@ -89,7 +89,7 @@ public class UsuarioController  implements Serializable {
 			if (this.usuarioSelect != null) {
 				this.usuario = usuarioSelect;
 
-				view = "/product/update";
+				view = "/ciudad/update";
 			} else {
 				Message.messageInfo("Debe seleccionar un Usuario");
 			}
@@ -102,7 +102,7 @@ public class UsuarioController  implements Serializable {
 
 	public void searchUsuarioById() {
 		try {
-			usuariosid = usuarioBusiness.getUsuarioById(this.filterId.longValue());
+			usuariosid = usuarioBusiness.getUsuarioById(this.filterId);
 			resetForm();
 			if (usuarios.isEmpty()) {
 				Message.messageInfo("No se encontraron al usuario");

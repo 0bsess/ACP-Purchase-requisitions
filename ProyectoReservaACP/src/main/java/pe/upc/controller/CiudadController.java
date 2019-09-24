@@ -3,14 +3,10 @@ package pe.upc.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.primefaces.event.SelectEvent;
-
 import pe.upc.business.CiudadBusiness;
 import pe.upc.business.PaisBusiness;
 import pe.upc.model.entity.Ciudad;
@@ -34,7 +30,7 @@ public class CiudadController implements Serializable {
 
 	private Pais pais;
 	private List<Pais> paises;
-
+	private String filterName;
 	@PostConstruct
 	public void init() {
 		ciudad = new Ciudad();
@@ -54,9 +50,47 @@ public class CiudadController implements Serializable {
 		}
 	}
 
-
 	public String listCiudad() {
 		return "list.xhtml";
+	}
+
+	public String newCiudad() {
+		try {
+			this.paises = paisBusiness.getAll();
+			resetForm();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		return "insert.xhtml";
+	}
+	
+	public void resetForm() {
+			this.filterName = "";
+			this.ciudad = new Ciudad();
+		}
+	public String saveCiudad() {
+		String view = "";
+		try {
+
+			if (ciudad.getIdCiudad() != 0) {
+				ciudad.setPais(pais);
+				ciudadBusiness.update(ciudad);
+				Message.messageInfo("Registro actualizado exitosamente");
+			} else {
+				ciudad.setPais(pais);
+				ciudadBusiness.insert(ciudad);
+				Message.messageInfo("Registro guardado exitosamente");
+
+			}
+			this.getAllCiudades();
+			resetForm();
+			view = "list";
+		} catch (Exception e) {
+			Message.messageError("Error Ciudad :" + e.getStackTrace());
+		}
+
+		return view;
 	}
 
 	public CiudadBusiness getCiudadBusiness() {
@@ -115,5 +149,12 @@ public class CiudadController implements Serializable {
 		this.paises = paises;
 	}
 
+	public String getFilterName() {
+		return filterName;
+	}
+
+	public void setFilterName(String filterName) {
+		this.filterName = filterName;
+	}
 	
 }

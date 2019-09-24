@@ -16,56 +16,30 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Nuevo" icon="ui-icon-disk"
-						  action="#{Controller.newProduct()}"
-						  ajax="false"/>
-						
-						 <p:commandButton value="Editar" icon="ui-icon-disk"
-						  action="#{productController.editProduct()}"
+						  action="#{ciudadController.newCiudad()}"
 						  ajax="false"/>
 					</f:facet>
 				</p:toolbar>
 
 
-				<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
-					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
-					<p:inputText id="txtSearchName"  value="#{productController.filterName}" />
-					<p:commandButton icon="ui-icon-search" 
-					  actionListener="#{productController.searchProductByName}"
-					  update=":frm:datTabProducts :frm:men"/>
-				</p:panelGrid>
-
-				<p:dataTable id="datTabProducts"
-					emptyMessage="No existen productos registrados"
-					value="#{productController.products}" var="product"
+				<p:dataTable id="datTabciudads"
+					emptyMessage="No existen ciudados registrados"
+					value="#{ciudadController.ciudades}" var="ciudad"
 					
-					rowKey="#{product.id}"
-					selectionMode="single"
-					selection="#{productController.productSelect}"
 					
 					paginator="true" rows="10">
-					
-					
-					<p:ajax event="rowSelect"
-						listener="#{productController.selectProduct}" />
-					
 
 					<p:column headerText="Id">
-						<p:outputLabel value="#{product.id}" />
+						<p:outputLabel value="#{ciudad.idCiudad}" />
 					</p:column>
-					<p:column headerText="Producto">
-						<p:outputLabel value="#{product.name}" />
+					<p:column headerText="Ciudad">
+						<p:outputLabel value="#{ciudad.nameCiudad}" />
 					</p:column>
-					<p:column headerText="Proveedor">
-						<p:outputLabel value="#{product.supplier.name}" />
-					</p:column>
-					<p:column headerText="Categoria">
-						<p:outputLabel value="#{product.category}" />
+					<p:column headerText="Pais">
+						<p:outputLabel value="#{ciudad.pais.namePais}" />
 					</p:column>
 					
 				</p:dataTable>
-
-				
-
 
 			</h:form>
 		</ui:define>
