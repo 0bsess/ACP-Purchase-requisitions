@@ -32,5 +32,7 @@ public class CiudadRepository implements Serializable{
 		em.merge(ciudad);
 		return ciudad.getIdCiudad();
 	}
-	
+	public void delete(Ciudad ciudad) throws Exception {
+		em.remove(ciudad);
+	}
 }

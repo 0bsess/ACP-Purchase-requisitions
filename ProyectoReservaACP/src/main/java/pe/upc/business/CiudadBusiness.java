@@ -28,5 +28,8 @@ public class CiudadBusiness implements Serializable{
 	public int update(Ciudad ciudad) throws Exception{
 		return ciudadRepository.update(ciudad);
 	}
-	
+	@Transactional
+	public void delet(Ciudad ciudad) throws Exception{
+		ciudadRepository.delete(ciudad);
+	}
 }

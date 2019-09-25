@@ -7,6 +7,9 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.event.SelectEvent;
+
 import pe.upc.business.CiudadBusiness;
 import pe.upc.business.PaisBusiness;
 import pe.upc.model.entity.Ciudad;
@@ -91,6 +94,36 @@ public class CiudadController implements Serializable {
 		}
 
 		return view;
+	}
+	public String editCiudad() {
+		String view = "";
+		try {
+			if (this.ciudadSelect != null) {
+				this.ciudad = ciudadSelect;
+
+				view = "/ciudad/update";
+			} else {
+				Message.messageInfo("Debe seleccionar una Ciudad");
+			}
+		} catch (Exception e) {
+			Message.messageError("Error Ciudad :" + e.getMessage());
+		}
+
+		return view;
+	}
+	public void selectCiudad(SelectEvent e) {
+		this.ciudadSelect = (Ciudad) e.getObject();
+	}
+	public void eliminar() {
+		try {
+			if (this.ciudadSelect != null) {
+				this.ciudad = ciudadSelect;
+				ciudadBusiness.delet(ciudad);}
+			this.getAllCiudades();
+			resetForm();
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
 	public CiudadBusiness getCiudadBusiness() {

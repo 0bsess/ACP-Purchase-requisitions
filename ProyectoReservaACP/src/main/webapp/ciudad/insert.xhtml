@@ -11,7 +11,6 @@
 		<ui:define name="content">
 			<h:form id="frm">
 				<p:growl id="men" />
-
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Guardar" icon="ui-icon-disk" 
@@ -30,7 +29,7 @@
 					<p:inputText id="txtName" required="true" maxlength="45"
 						value="#{ciudadController.ciudad.nameCiudad}" />
 						
-					<p:outputLabel value="Proveedor" for="cboPais" />				
+					<p:outputLabel value="Pais" for="cboPais" />				
 					<p:selectOneMenu id="cboPais" required="true" effect="drop"
 						value="#{ciudadController.pais}"
 						converter="omnifaces.SelectItemsConverter">

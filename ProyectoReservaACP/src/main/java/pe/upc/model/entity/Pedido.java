@@ -26,10 +26,6 @@ public class Pedido {
 	@Column(name = "quantityPeso", nullable = false)
 	private double quantityPeso;
 	
-	@ManyToOne
-	@JoinColumn(name = "idUnidad", nullable = false)
-	private Unidad unidad;
-
 	public int getIdPedido() {
 		return idPedido;
 	}
@@ -61,15 +57,5 @@ public class Pedido {
 	public void setQuantityPeso(double quantityPeso) {
 		this.quantityPeso = quantityPeso;
 	}
-
-	public Unidad getUnidad() {
-		return unidad;
-	}
-
-	public void setUnidad(Unidad unidad) {
-		this.unidad = unidad;
-	}
-	
-	
 	
 }

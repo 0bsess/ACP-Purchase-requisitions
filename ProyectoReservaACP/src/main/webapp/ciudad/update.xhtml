@@ -11,51 +11,34 @@
 		<ui:define name="content">
 			<h:form id="frm">
 				<p:growl id="men" />
-
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Guardar" icon="ui-icon-disk" 
-						action="#{usuarioController.saveUsuario()}" ajax="false"/>
+						action="#{ciudadController.saveCiudad()}" ajax="false"/>
 
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
-						  action="#{usuarioController.listUsuario()}"
+						  action="#{ciudadController.listCiudad()}"
 						  immediate="true"
 						  ajax="false"/>
 					</f:facet>
 				</p:toolbar>
+					
 				<p:panelGrid id="panGridUsuario" columns="2" style="width:100%">
 					
-					<p:outputLabel value="Nombre:" for="txtName" />					
+						<p:outputLabel value="Ciudad:" for="txtName" />					
 					<p:inputText id="txtName" required="true" maxlength="45"
-						value="#{usuarioController.usuario.nameUsuario}" />
-					
-					<p:outputLabel value="Apellido Paterno" for="txtName" />					
-					<p:inputText id="txtAp" required="true" maxlength="45"
-						value="#{usuarioController.usuario.nameApPaterno}" />
-					
-					<p:outputLabel value="Apellido Materno" for="txtAp" />					
-					<p:inputText id="txtAm" required="true" maxlength="45"
-						value="#{usuarioController.usuario.nameApMaterno}" />
-					
-					<p:outputLabel value="Nª Documento" for="txtAm" />
-					<p:inputText id="txtDoc" required="true" maxlength="45"
-						value="#{usuarioController.usuario.idDocumento}" />
-					
-					<p:outputLabel value="Nª Telefono" for="txtDoc" />
-					<p:inputText id="txtTel" required="true" maxlength="45"
-						value="#{usuarioController.usuario.phone}" />
-					
-					<p:outputLabel value="Email" for="txtTel" />
-					<p:inputText id="txtEm" required="true" maxlength="45"
-						value="#{usuarioController.usuario.email}" />
-					
-					<p:outputLabel value="Password" for="txtEm" />
-					<p:inputText id="txtPass" required="true" maxlength="45"
-						value="#{usuarioController.usuario.password}" />
-					
-					<p:outputLabel value="Flag Admin" for="txtPass" />
-					<p:inputText id="txtAdmin" required="true" maxlength="45"
-						value="#{usuarioController.usuario.flagAdmin}" />		
+						value="#{ciudadController.ciudad.nameCiudad}" />
+						
+					<p:outputLabel value="Pais" for="cboPais" />				
+					<p:selectOneMenu id="cboPais" required="true" effect="drop"
+						value="#{ciudadController.pais}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItems value="#{ciudadController.paises}"
+							var="pais" itemLabel="#{pais.namePais}"
+							itemValue="#{pais}" />
+					</p:selectOneMenu>
 				</p:panelGrid>
 				<br></br>
 			</h:form>

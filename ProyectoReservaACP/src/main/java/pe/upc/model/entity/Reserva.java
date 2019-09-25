@@ -31,9 +31,6 @@ public class Reserva {
 	private Date dayLlegada;
 	private boolean flagAnulado;
 	private Date dayVencimiento;
-	private boolean flagCancelado;
-	private double moneyPrecioFinal;
-		
 	public int getIdReserva() {
 		return idReserva;
 	}
@@ -76,16 +73,5 @@ public class Reserva {
 	public void setDayVencimiento(Date dayVencimiento) {
 		this.dayVencimiento = dayVencimiento;
 	}
-	public boolean isFlagCancelado() {
-		return flagCancelado;
-	}
-	public void setFlagCancelado(boolean flagCancelado) {
-		this.flagCancelado = flagCancelado;
-	}
-	public double getMoneyPrecioFinal() {
-		return moneyPrecioFinal;
-	}
-	public void setMoneyPrecioFinal(double moneyPrecioFinal) {
-		this.moneyPrecioFinal = moneyPrecioFinal;
-	}	
+	
 }

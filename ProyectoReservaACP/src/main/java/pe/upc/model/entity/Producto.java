@@ -20,6 +20,7 @@ public class Producto {
 	private Date dayReabastecimiento;
 	private int quantityStock;
 	private double moneyPrecio;
+	private int quantityReserva;
 	
 	public Long getIdProducto() {
 		return idProducto;
@@ -45,6 +46,13 @@ public class Producto {
 	public void setQuantityStock(int quantityStock) {
 		this.quantityStock = quantityStock;
 	}
+	public int getQuantityReserva() {
+		return quantityReserva;
+	}
+	public void setQuantityReserva(int quantityReserva) {
+		this.quantityReserva = quantityReserva;
+	}
+	
 	public double getMoneyPrecio() {
 		return moneyPrecio;
 	}

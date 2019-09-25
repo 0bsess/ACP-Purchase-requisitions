@@ -18,6 +18,12 @@
 						<p:commandButton value="Nuevo" icon="ui-icon-disk"
 						  action="#{ciudadController.newCiudad()}"
 						  ajax="false"/>
+						<p:commandButton value="Editar" icon="ui-icon-disk"
+						  action="#{ciudadController.editCiudad()}"
+						  ajax="false"/>
+						 <p:commandButton value="Eliminar" icon="ui-icon-disk"
+						  action="#{ciudadController.eliminar()}"
+						  ajax="false"/>
 					</f:facet>
 				</p:toolbar>
 
@@ -26,9 +32,14 @@
 					emptyMessage="No existen ciudados registrados"
 					value="#{ciudadController.ciudades}" var="ciudad"
 					
+					rowKey="#{ciudad.idCiudad}"
+					selectionMode="single"
+					selection="#{ciudadController.ciudadSelect}"
 					
 					paginator="true" rows="10">
-
+					<p:ajax event="rowSelect"
+						listener="#{ciudadController.selectCiudad}" />
+						
 					<p:column headerText="Id">
 						<p:outputLabel value="#{ciudad.idCiudad}" />
 					</p:column>
@@ -38,7 +49,6 @@
 					<p:column headerText="Pais">
 						<p:outputLabel value="#{ciudad.pais.namePais}" />
 					</p:column>
-					
 				</p:dataTable>
 
 			</h:form>

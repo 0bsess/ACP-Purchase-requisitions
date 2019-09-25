@@ -26,7 +26,7 @@
 				</p:toolbar>
 
 
-				<p:panelGrid id="panGridProduct" columns="2" style="width:100%">
+						<p:panelGrid id="panGridProduct" columns="2" style="width:100%">
 					<p:outputLabel value="Producto:" for="txtName" />
 					<p:inputText id="txtName" required="true" maxlength="45"
 						value="#{productoController.product.nameProducto}" />
@@ -42,6 +42,11 @@
 					<p:outputLabel value="Stock" for="txtStock" />
 					<p:inputText id="txtStock" required="true" maxlength="45"
 						value="#{productoController.product.quantityStock}" />
+						
+					<p:outputLabel value="Stock reserva" for="txtStockR" />
+					<p:inputText id="txtStockR" required="true" maxlength="45"
+						value="#{productoController.product.quantityReserva}" />
+						
 						
 				</p:panelGrid>
 				<br></br>
