@@ -16,18 +16,22 @@ private static final long serialVersionUID = 4L;
 	private ProductoRepository productoRepository;
 
 	@Transactional
-	public int insert(Producto producto) throws Exception {
+	public Long insert(Producto producto) throws Exception {
 		return productoRepository.insert(producto);
 	}
 
 	
 	@Transactional
-	public int update(Producto producto) throws Exception{
+	public Long update(Producto producto) throws Exception{
 		return productoRepository.update(producto);
 	}
 	
 	
 	public List<Producto> getAll() throws Exception {
 		return productoRepository.findAll();
-	}	
+	}
+	
+	public List<Producto> getProductosByName(String name) throws Exception{
+		return productoRepository.findByName(name);
+	}
 }

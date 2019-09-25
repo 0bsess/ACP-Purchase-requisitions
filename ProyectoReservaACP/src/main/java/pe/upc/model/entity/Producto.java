@@ -1,8 +1,8 @@
 package pe.upc.model.entity;
 
 
-/*import java.util.Date;*/
-import java.sql.Date;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,16 +14,17 @@ import javax.persistence.Table;
 public class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idProducto;
+	private Long idProducto;
 	private String nameProducto;
+	//@(message="seleccione una fecha mayor")
 	private Date dayReabastecimiento;
 	private int quantityStock;
 	private double moneyPrecio;
 	
-	public int getIdProducto() {
+	public Long getIdProducto() {
 		return idProducto;
 	}
-	public void setIdProducto(int idProducto) {
+	public void setIdProducto(Long idProducto) {
 		this.idProducto = idProducto;
 	}
 	public String getNameProducto() {

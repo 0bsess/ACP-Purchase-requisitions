@@ -7,7 +7,6 @@
 
 <h:head></h:head>
 <body>
-
 	<ui:composition template="/WEB-INF/templates/master.xhtml">
 		<ui:define name="content">
 			<h:form id="frm">
@@ -16,11 +15,11 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Nuevo" icon="ui-icon-disk"
-						  action="#{productController.newProduct()}"
+						  action="#{productoController.newProduct()}"
 						  ajax="false"/>
 						
 						 <p:commandButton value="Editar" icon="ui-icon-disk"
-						  action="#{productController.editProduct()}"
+						  action="#{productoController.editProduct()}"
 						  ajax="false"/>
 					</f:facet>
 				</p:toolbar>
@@ -28,45 +27,44 @@
 
 				<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
 					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
-					<p:inputText id="txtSearchName"  value="#{productController.filterName}" />
+					<p:inputText id="txtSearchName"  value="#{productoController.filterName}" />
 					<p:commandButton icon="ui-icon-search" 
-					  actionListener="#{productController.searchProductByName}"
+					  actionListener="#{productoController.searchProductoByName}"
 					  update=":frm:datTabProducts :frm:men"/>
 				</p:panelGrid>
 
 				<p:dataTable id="datTabProducts"
 					emptyMessage="No existen productos registrados"
-					value="#{productController.products}" var="product"
+					value="#{productoController.products}" var="producto"
 					
-					rowKey="#{product.id}"
+					rowKey="#{producto.idProducto}"
 					selectionMode="single"
-					selection="#{productController.productSelect}"
+					selection="#{productoController.productSelect}"
 					
 					paginator="true" rows="10">
 					
 					
 					<p:ajax event="rowSelect"
-						listener="#{productController.selectProduct}" />
+						listener="#{productoController.selectProduct}" />
 					
 
 					<p:column headerText="Id">
-						<p:outputLabel value="#{product.id}" />
+						<p:outputLabel value="#{producto.idProducto}" />
 					</p:column>
 					<p:column headerText="Producto">
-						<p:outputLabel value="#{product.name}" />
+						<p:outputLabel value="#{producto.nameProducto}" />
 					</p:column>
-					<p:column headerText="Proveedor">
-						<p:outputLabel value="#{product.supplier.name}" />
+					<p:column headerText="Precio por kg">
+						<p:outputLabel value="#{producto.moneyPrecio}" />
 					</p:column>
-					<p:column headerText="Categoria">
-						<p:outputLabel value="#{product.category}" />
+					<p:column headerText="Dia reabastecimiento">
+						<p:outputLabel value="#{producto.dayReabastecimiento}" />
+					</p:column>
+					<p:column headerText="Stock disponible">
+						<p:outputLabel value="#{producto.quantityStock}" />
 					</p:column>
 					
 				</p:dataTable>
-
-				
-
-
 			</h:form>
 		</ui:define>
 	</ui:composition>

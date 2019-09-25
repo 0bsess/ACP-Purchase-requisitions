@@ -15,13 +15,13 @@ private static final long serialVersionUID = 4L;
 	@PersistenceContext(unitName="pwPU")
 	private EntityManager em;
 	
-	public int insert(Producto producto) throws Exception {
+	public Long insert(Producto producto) throws Exception {
 		em.persist(producto);
 		return producto.getIdProducto();
 	}
 	
 	
-	public int update(Producto producto) throws Exception {
+	public Long update(Producto producto) throws Exception {
 		em.merge(producto);
 		return producto.getIdProducto();
 	}
@@ -38,5 +38,14 @@ private static final long serialVersionUID = 4L;
 		productos=query.getResultList();
 		
 		return productos;
-	}	
+	}
+	public List<Producto> findByName(String name) throws Exception {
+		List<Producto> productos = new ArrayList<>();
+
+		TypedQuery<Producto> query = em.createQuery("FROM Producto p WHERE p.name LIKE ?1", Producto.class);
+		query.setParameter(1, "%" + name + "%");
+		productos = query.getResultList();
+
+		return productos;
+	}
 }
