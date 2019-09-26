@@ -71,29 +71,35 @@ public class CiudadController implements Serializable {
 			this.filterName = "";
 			this.ciudad = new Ciudad();
 		}
+	
+	
 	public String saveCiudad() {
-		String view = "";
-		try {
+	String view = "";
+	try {
 
-			if (ciudad.getIdCiudad() != 0) {
-				ciudad.setPais(pais);
-				ciudadBusiness.update(ciudad);
-				Message.messageInfo("Registro actualizado exitosamente");
-			} else {
-				ciudad.setPais(pais);
+		if (ciudad.getIdCiudad() != null) {
+			ciudadBusiness.update(ciudad);
+			Message.messageInfo("Registro actualizado exitosamente");
+		} else {
+			if(ciudadBusiness.validar(ciudad.getNameCiudad())==null)
+			{
 				ciudadBusiness.insert(ciudad);
-				Message.messageInfo("Registro guardado exitosamente");
-
+			Message.messageInfo("Registro guardado exitosamente");
 			}
-			this.getAllCiudades();
-			resetForm();
-			view = "list";
-		} catch (Exception e) {
-			Message.messageError("Error Ciudad :" + e.getStackTrace());
+			else {
+				Message.messageInfo("El ciudad ya se encuentra registrado");
+			}
 		}
-
-		return view;
+		this.getAllCiudades();
+		resetForm();
+		view = "list";
+	} catch (Exception e) {
+		Message.messageError("Error Ciudad :" + e.getStackTrace());
 	}
+
+	return view;
+}
+	
 	public String editCiudad() {
 		String view = "";
 		try {
@@ -128,6 +134,8 @@ public class CiudadController implements Serializable {
 		}
 		return view;
 	}
+	
+
 
 	public CiudadBusiness getCiudadBusiness() {
 		return ciudadBusiness;

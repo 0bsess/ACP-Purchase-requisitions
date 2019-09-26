@@ -82,7 +82,7 @@ public class ReservaController implements Serializable {
 			if (this.reservaSelect != null) {
 				this.reserva = reservaSelect;
 
-				view = "/ciudad/update";
+				view = "/reserva/update";
 			} else {
 				Message.messageInfo("Debe seleccionar un Usuario");
 			}

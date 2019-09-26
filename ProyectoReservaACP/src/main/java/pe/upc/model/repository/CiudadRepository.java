@@ -23,17 +23,29 @@ public class CiudadRepository implements Serializable{
 		return ciudades;
 	}
 
-	public int insert(Ciudad ciudad) throws Exception {
+	public Long insert(Ciudad ciudad) throws Exception {
 		em.persist(ciudad);
 		return ciudad.getIdCiudad();
 	}
 
-	public int update(Ciudad ciudad) throws Exception {
+	public Long update(Ciudad ciudad) throws Exception {
 		em.merge(ciudad);
 		return ciudad.getIdCiudad();
 	}
-	public int delete(Ciudad ciudad) throws Exception {
+	public Long delete(Ciudad ciudad) throws Exception {
 		em.remove(ciudad);
 		return ciudad.getIdCiudad();
+	}
+	public List<Ciudad> ListarCiudadxNombre(String nombre) throws Exception {
+		List<Ciudad> ciudad = new ArrayList<>();
+
+		TypedQuery<Ciudad> query = em.createQuery("FROM Ciudad p WHERE p.nombre LIKE ?1", Ciudad.class);
+		query.setParameter(1, "%" + nombre + "%");
+		ciudad = query.getResultList();
+
+		if(ciudad.isEmpty())
+			return null;
+		else
+			return ciudad;
 	}
 }

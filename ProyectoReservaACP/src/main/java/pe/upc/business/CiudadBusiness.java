@@ -20,16 +20,21 @@ public class CiudadBusiness implements Serializable{
 	}
 	
 	@Transactional
-	public int insert(Ciudad ciudad) throws Exception {
+	public Long insert(Ciudad ciudad) throws Exception {
 		return ciudadRepository.insert(ciudad);
 	}
 	
 	@Transactional
-	public int update(Ciudad ciudad) throws Exception{
+	public Long update(Ciudad ciudad) throws Exception{
 		return ciudadRepository.update(ciudad);
 	}
 	@Transactional
-	public int delete(Ciudad ciudad) throws Exception{
+	public Long delete(Ciudad ciudad) throws Exception{
 		return ciudadRepository.delete(ciudad);
 	}
+	
+	public List<Ciudad> validar(String nombre) throws Exception {
+		return ciudadRepository.ListarCiudadxNombre(nombre);
+	}
 }
+

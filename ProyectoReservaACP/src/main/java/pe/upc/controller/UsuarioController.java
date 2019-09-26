@@ -89,7 +89,7 @@ public class UsuarioController  implements Serializable {
 			if (this.usuarioSelect != null) {
 				this.usuario = usuarioSelect;
 
-				view = "/ciudad/update";
+				view = "/usuario/update";
 			} else {
 				Message.messageInfo("Debe seleccionar un Usuario");
 			}

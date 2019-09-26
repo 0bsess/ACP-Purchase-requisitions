@@ -13,18 +13,18 @@ import javax.persistence.Table;
 public class Ciudad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCiudad;
+	private Long idCiudad;
 	private String nameCiudad;
 	
 	@ManyToOne
 	@JoinColumn(name = "idPais", nullable = false)
 	private Pais pais;
 
-	public int getIdCiudad() {
+	public Long getIdCiudad() {
 		return idCiudad;
 	}
 
-	public void setIdCiudad(int idCiudad) {
+	public void setIdCiudad(Long idCiudad) {
 		this.idCiudad = idCiudad;
 	}
 

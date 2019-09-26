@@ -12,13 +12,20 @@
 	<ui:insert name="header">
 		<h:form>
 			<p:menubar autoDisplay="false">
-				<p:submenu label="Mantenimiento" icon="ui-icon-pencil">
+				<p:submenu label="Administrador" icon="ui-icon-pencil">
 					<p:menuitem icon="ui-icon-document" value="Ciudad"
 						url="/ciudad/list.xhtml" />
 					<p:menuitem icon="ui-icon-document" value="Usuarios"
 						url="/usuario/list.xhtml" />
 					<p:menuitem icon="ui-icon-document" value="Productos"
 						url="/producto/list.xhtml" />	
+					<p:menuitem icon="ui-icon-document" value="Reservas"
+						url="/reserva/list.xhtml" />
+					<p:menuitem icon="ui-icon-document" value="Facturas"
+						url="/pedido/list.xhtml" />	
+				</p:submenu>
+				
+				<p:submenu label="Cliente" icon="ui-icon-pencil">
 					<p:menuitem icon="ui-icon-document" value="Reservas"
 						url="/reserva/list.xhtml" />
 					<p:menuitem icon="ui-icon-document" value="Pedidos"
