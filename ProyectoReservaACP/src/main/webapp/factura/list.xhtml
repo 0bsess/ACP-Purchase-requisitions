@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:growl id="men" />
+
+				<p:toolbar>
+					<f:facet name="right">
+						<p:commandButton value="Nuevo" icon="ui-icon-disk"
+						  action="#{facturaController.newFactura()}"
+						  ajax="false"/>
+						
+						 <p:commandButton value="Pagar" icon="ui-icon-cart"
+						  action = "/factura/pagofake.xhtml"
+						  ajax="false"/>
+					</f:facet>
+				</p:toolbar>
+
+
+				<p:dataTable id="datTabReserva"
+					emptyMessage="No existen facturas registradas"
+					value="#{facturaController.facturas}" var="factura"
+					
+					rowKey="#{factura.idFactura}"
+					selectionMode="single"
+					selection="#{facturaController.facturaSelect}"
+					
+					paginator="true" rows="10">
+					
+					
+					<p:ajax event="rowSelect"
+						listener="#{facturaController.selectFactura}" />
+					
+
+					<p:column headerText="Id Factura">
+						<p:outputLabel value="#{factura.idFactura}" />
+					</p:column>
+					<p:column headerText="Id Reserva">
+						<p:outputLabel value="#{factura.reserva.idReserva}" />
+					</p:column>
+					<p:column headerText="Número de factura">
+						<p:outputLabel value="#{factura.numFactura}" />
+					</p:column>
+					<p:column headerText="Número de serie">
+						<p:outputLabel value="#{factura.numSerie}" />						
+					</p:column>
+					<p:column headerText="Cancelado">
+						<p:outputLabel value="#{factura.flagCancelado}" />						
+					</p:column>
+					<p:column headerText="Fecha de emisión">
+						<p:outputLabel value="#{factura.dayFactura}" />						
+					</p:column>
+					<p:column headerText="Monto">
+						<p:outputLabel value="#{factura.moneyPrecioFinal}" />						
+					</p:column>
+				</p:dataTable>
+
+				
+
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
