@@ -19,13 +19,13 @@ private static final long serialVersionUID = 7L;
 	@PersistenceContext(unitName="pwPU")
 	private EntityManager em;
 	
-	public int insert(Pedido pedido) throws Exception {
+	public Long insert(Pedido pedido) throws Exception {
 		em.persist(pedido);
 		return pedido.getIdPedido();
 	}
 	
 	
-	public int update(Pedido pedido) throws Exception {
+	public Long update(Pedido pedido) throws Exception {
 		em.merge(pedido);
 		return pedido.getIdPedido();
 	}

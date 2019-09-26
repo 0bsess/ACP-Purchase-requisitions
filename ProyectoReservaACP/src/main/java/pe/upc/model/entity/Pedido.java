@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Pedido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPedido;
+	private Long idPedido;
 	
 	@ManyToOne
 	@JoinColumn(name = "idReserva", nullable = false)
@@ -26,11 +26,11 @@ public class Pedido {
 	@Column(name = "quantityPeso", nullable = false)
 	private double quantityPeso;
 	
-	public int getIdPedido() {
+	public Long getIdPedido() {
 		return idPedido;
 	}
 
-	public void setIdPedido(int idPedido) {
+	public void setIdPedido(Long idPedido) {
 		this.idPedido = idPedido;
 	}
 

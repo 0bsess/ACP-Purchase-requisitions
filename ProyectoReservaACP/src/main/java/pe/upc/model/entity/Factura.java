@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Factura {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idFactura;
+	private Long idFactura;
 	
 	@OneToOne
 	@JoinColumn(name = "idReserva", nullable = false)
@@ -27,10 +27,11 @@ public class Factura {
 	String numSerie;
 	boolean flagCancelado;
 	Date dayFactura;
-	public int getIdFactura() {
+	
+	public Long getIdFactura() {
 		return idFactura;
 	}
-	public void setIdFactura(int idFactura) {
+	public void setIdFactura(Long idFactura) {
 		this.idFactura = idFactura;
 	}
 	public Reserva getReserva() {

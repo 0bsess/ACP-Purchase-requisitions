@@ -16,40 +16,61 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Guardar" icon="ui-icon-disk" 
-						action="#{productController.saveProduct()}" ajax="false"/>
+						action="#{reservaController.saveReserva()}" ajax="false"/>
 
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
-						  action="#{productController.listProduct()}"
+						  action="#{reservaController.listReserva()}"
 						  immediate="true"
 						  ajax="false"/>
 					</f:facet>
 				</p:toolbar>
 
 
-				<p:panelGrid id="panGridProduct" columns="2" style="width:100%">
-					<p:outputLabel value="Producto:" for="txtName" />
-					<p:inputText id="txtName" required="true" maxlength="45"
-						value="#{productController.product.name}" />
-					<p:outputLabel value="Proveedor" for="cboSupplier" />
-					<p:selectOneMenu id="cboSupplier" required="true" effect="drop"
-						value="#{productController.supplier}"
+				<p:panelGrid id="panGridReserva" columns="2" style="width:100%">
+					<p:outputLabel value="DayReserva:" for="txtDay" />
+					<p:calendar id="txtDay" required="true" maxlength="45"
+						value="#{reservaController.reserva.dayReserva}" />
+					
+					<p:outputLabel value="Usuario:" for="cboUsuario" />
+					
+					<p:selectOneMenu id="cboUsuario" required="true" effect="drop"
+						value="#{reservaController.reserva.usuario}"
 						converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Seleccione una opción"
 							noSelectionOption="true" itemValue="" />
-						<f:selectItems value="#{productController.suppliers}"
-							var="supplier" itemLabel="#{supplier.name}"
-							itemValue="#{supplier}" />
+						<f:selectItems value="#{usuarioController.usuarios}"
+							var="usuario" itemLabel="#{usuario.idUsuario}"
+							itemValue="#{usuario}" />
 					</p:selectOneMenu>
+										
+						
+						
+					<p:outputLabel value="Ciudad " for="cboCiudad" />
+					<p:selectOneMenu id="cboCiudad" required="true" effect="drop"
+						value="#{reservaController.reserva.ciudad}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItems value="#{ciudadController.ciudades}"
+							var="ciudad" itemLabel="#{ciudad.nameCiudad}"
+							itemValue="#{ciudad}" />
+					</p:selectOneMenu>
+
 					
-					<p:outputLabel value="Categoria" for="txtCategory" />
-					<p:inputText id="txtCategory" required="true" maxlength="45"
-						value="#{productController.product.category}" />
-					<p:outputLabel value="Precio Unitario" for="txtUnitPrice" />
-					<p:inputText id="txtUnitPrice" required="true" maxlength="45"
-						value="#{productController.product.unitPrice}" />
-					<p:outputLabel value="Stock" for="txtStock" />
-					<p:inputText id="txtStock" required="true" maxlength="45"
-						value="#{productController.product.unitsInStock}" />
+					<p:outputLabel value="Llegada" for="txtLlegada" />
+					<p:calendar id="txtLlegada" required="true" maxlength="45"
+						value="#{reservaController.reserva.dayLlegada}" />
+					
+					<p:outputLabel value="Vencimiento" for="txtVencimiento" />
+					<p:calendar id="txtVencimiento" required="true" maxlength="45"
+						value="#{reservaController.reserva.dayVencimiento}" />
+						
+					<p:outputLabel value="Anulado" for="txtAnulado" />
+					<p:inputText id="txtAnulado" required="true" maxlength="45"
+						value="#{reservaController.reserva.flagAnulado}" />	
+											
+										
+						
 				</p:panelGrid>
 				<br></br>
 

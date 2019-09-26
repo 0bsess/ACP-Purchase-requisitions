@@ -2,8 +2,6 @@ package pe.upc.model.repository;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,13 +15,13 @@ private static final long serialVersionUID = 6L;
 	@PersistenceContext(unitName="pwPU")
 	private EntityManager em;
 	
-	public int insert(Reserva reserva) throws Exception {
+	public Long insert(Reserva reserva) throws Exception {
 		em.persist(reserva);
 		return reserva.getIdReserva();
 	}
 	
 	
-	public int update(Reserva reserva) throws Exception {
+	public Long update(Reserva reserva) throws Exception {
 		em.merge(reserva);
 		return reserva.getIdReserva();
 	}
@@ -43,14 +41,4 @@ private static final long serialVersionUID = 6L;
 		return reservas;
 	}
 	
-	
-	public Optional<Reserva> findById(Long id) throws Exception{
-		Reserva productFound;
-		
-		TypedQuery<Reserva> query=em.createQuery("FROM Reserva r WHERE r.id=?1",Reserva.class);
-		query.setParameter(1, id);
-		productFound=query.getSingleResult();
-		
-		return Optional.of(productFound);
-	}
 }

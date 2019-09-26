@@ -16,43 +16,40 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Nuevo" icon="ui-icon-disk"
-						  action="#{ciudadController.newCiudad()}"
+						  action="#{pedidoController.newPedido()}"
 						  ajax="false"/>
 						<p:commandButton value="Editar" icon="ui-icon-disk"
-						  action="#{ciudadController.editCiudad()}"
-						  ajax="false"/>
-						 <p:commandButton value="Eliminar" icon="ui-icon-disk"
-						  action="#{ciudadController.eliminar(ciudad)}"
+						  action="#{pedidoController.editPedido()}"
 						  ajax="false"/>
 					</f:facet>
 				</p:toolbar>
 
 
-				<p:dataTable id="datTabciudades"
-					emptyMessage="No existen ciudados registrados"
-					value="#{ciudadController.ciudades}" var="ciudad"
+				<p:dataTable id="datTabpedidos"
+					emptyMessage="No existen pedidos registrados"
+					value="#{pedidoController.pedidos}" var="pedido"
 					
-					rowKey="#{ciudad.idCiudad}"
+					rowKey="#{pedido.idPedido}"
 					selectionMode="single"
-					selection="#{ciudadController.ciudadSelect}"
+					selection="#{pedidoController.pedidoSelect}"
 					
 					paginator="true" rows="10">
 					<p:ajax event="rowSelect"
-						listener="#{ciudadController.selectCiudad}" />
+						listener="#{pedidoController.selectPedido}" />
 						
 					<p:column headerText="Id">
-						<p:outputLabel value="#{ciudad.idCiudad}" />
+						<p:outputLabel value="#{pedido.idPedido}" />
 					</p:column>
-					<p:column headerText="Ciudad">
-						<p:outputLabel value="#{ciudad.nameCiudad}" />
+					<p:column headerText="Codigo Reserva">
+						<p:outputLabel value="#{pedido.reserva.idReserva}" />
 					</p:column>
-					<p:column headerText="Pais">
-						<p:outputLabel value="#{ciudad.pais.namePais}" />
+					<p:column headerText="Producto">
+						<p:outputLabel value="#{pedido.producto.nameProducto}" />
 					</p:column>
-					<p:column headerText="Operación">
-								<h:commandLink action="listCiudades" value="Eliminar"
-									actionListener="#{ciudadController.eliminar(ciudad)}" />
-							</p:column>
+					<p:column headerText="Pedido">
+						<p:outputLabel value="#{pedido.quantityPeso}" />
+					</p:column>
+
 				</p:dataTable>
 
 			</h:form>

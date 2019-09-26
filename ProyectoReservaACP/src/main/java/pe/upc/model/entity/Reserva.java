@@ -15,7 +15,7 @@ public class Reserva {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idReserva;
+	private Long idReserva;
 	
 	private Date dayReserva;
 	
@@ -31,10 +31,10 @@ public class Reserva {
 	private Date dayLlegada;
 	private boolean flagAnulado;
 	private Date dayVencimiento;
-	public int getIdReserva() {
+	public Long getIdReserva() {
 		return idReserva;
 	}
-	public void setIdReserva(int idReserva) {
+	public void setIdReserva(Long idReserva) {
 		this.idReserva = idReserva;
 	}
 	public Date getDayReserva() {

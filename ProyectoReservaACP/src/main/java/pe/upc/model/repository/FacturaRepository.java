@@ -7,8 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import pe.upc.model.entity.Factura;
-import pe.upc.model.entity.Reserva;
-
 @Named
 public class FacturaRepository implements Serializable {
 private static final long serialVersionUID = 7L;
@@ -16,13 +14,13 @@ private static final long serialVersionUID = 7L;
 	@PersistenceContext(unitName="pwPU")
 	private EntityManager em;
 	
-	public int insert(Factura factura) throws Exception {
+	public Long insert(Factura factura) throws Exception {
 		em.persist(factura);
 		return factura.getIdFactura();
 	}
 	
 	
-	public int update(Factura factura) throws Exception {
+	public Long update(Factura factura) throws Exception {
 		em.merge(factura);
 		return factura.getIdFactura();
 	}
@@ -33,12 +31,12 @@ private static final long serialVersionUID = 7L;
 	}
 	
 	
-	public List<Reserva> findAll() throws Exception{
-		List<Reserva> reservas=new ArrayList<>();
+	public List<Factura> findAll() throws Exception{
+		List<Factura> facturas=new ArrayList<>();
 		
-		TypedQuery<Reserva> query=em.createQuery("FROM Reserva r",Reserva.class);
-		reservas=query.getResultList();
+		TypedQuery<Factura> query=em.createQuery("FROM Factura r",Factura.class);
+		facturas=query.getResultList();
 		
-		return reservas;
+		return facturas;
 	}
 }

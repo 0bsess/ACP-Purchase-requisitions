@@ -29,7 +29,7 @@ public class CiudadBusiness implements Serializable{
 		return ciudadRepository.update(ciudad);
 	}
 	@Transactional
-	public void delet(Ciudad ciudad) throws Exception{
-		ciudadRepository.delete(ciudad);
+	public int delete(Ciudad ciudad) throws Exception{
+		return ciudadRepository.delete(ciudad);
 	}
 }
