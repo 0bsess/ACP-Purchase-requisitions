@@ -52,5 +52,16 @@ private static final long serialVersionUID = 5L;
 		
 		return Optional.of(usuarioFound);
 	}
+	public List<Usuario> ListarUsuarioxDocumento(String dni) throws Exception {
+		List<Usuario> usuario = new ArrayList<>();
 
+		TypedQuery<Usuario> query = em.createQuery("FROM Usuario p WHERE p.idDocumento LIKE ?1", Usuario.class);
+		query.setParameter(1, "%" + dni + "%");
+		usuario = query.getResultList();
+
+		if(usuario.isEmpty())
+			return null;
+		else
+			return usuario;
+	}
 }

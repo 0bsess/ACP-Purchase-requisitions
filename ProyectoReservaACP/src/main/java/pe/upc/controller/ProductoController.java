@@ -57,29 +57,33 @@ public class ProductoController implements Serializable{
 	public String listProduct() {
 		return "list.xhtml";
 	}
-
+	
 	public String saveProduct() {
-		String view = "";
-		try {
+	String view = "";
+	try {
 
-			if (product.getIdProducto() != null) {
-				productBusiness.update(product);
-				Message.messageInfo("Registro actualizado exitosamente");
-			} else {
+		if (product.getIdProducto() != null) {
+			productBusiness.update(product);
+			Message.messageInfo("Registro actualizado exitosamente");
+		} else {
+			if(productBusiness.validar(product.getNameProducto())==null)
+			{
 				productBusiness.insert(product);
-				Message.messageInfo("Registro guardado exitosamente");
-
+			Message.messageInfo("Registro guardado exitosamente");
 			}
-			this.getAllProducts();
-			resetForm();
-			view = "list";
-		} catch (Exception e) {
-			Message.messageError("Error Producto :" + e.getStackTrace());
+			else {
+				Message.messageInfo("El producto ya se encuentra registrado");
+			}
 		}
-
-		return view;
+		this.getAllProducts();
+		resetForm();
+		view = "list";
+	} catch (Exception e) {
+		Message.messageError("Error Producto :" + e.getStackTrace());
 	}
 
+	return view;
+}
 	public String editProduct() {
 		String view = "";
 		try {

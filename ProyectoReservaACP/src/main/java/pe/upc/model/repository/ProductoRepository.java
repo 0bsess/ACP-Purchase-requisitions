@@ -48,4 +48,17 @@ private static final long serialVersionUID = 4L;
 
 		return productos;
 	}
+	
+	public List<Producto> ListarProductoxNombre(String nombre) throws Exception {
+		List<Producto> producto = new ArrayList<>();
+
+		TypedQuery<Producto> query = em.createQuery("FROM Producto p WHERE p.nameProducto LIKE ?1", Producto.class);
+		query.setParameter(1, "%" + nombre + "%");
+		producto = query.getResultList();
+
+		if(producto.isEmpty())
+			return null;
+		else
+			return producto;
+	}
 }

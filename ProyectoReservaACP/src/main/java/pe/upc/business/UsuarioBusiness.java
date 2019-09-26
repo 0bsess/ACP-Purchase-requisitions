@@ -35,4 +35,7 @@ private static final long serialVersionUID = 5L;
 	public Optional<Usuario> getUsuarioById(Long id) throws Exception{
 		return usuarioRepository.findById(id);
 	}
+	public List<Usuario> validar(String dni) throws Exception {
+		return usuarioRepository.ListarUsuarioxDocumento(dni);
+	}
 }

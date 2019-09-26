@@ -87,7 +87,7 @@ public class CiudadController implements Serializable {
 			Message.messageInfo("Registro guardado exitosamente");
 			}
 			else {
-				Message.messageInfo("El ciudad ya se encuentra registrado");
+				Message.messageInfo("La ciudad ya se encuentra registrado");
 			}
 		}
 		this.getAllCiudades();

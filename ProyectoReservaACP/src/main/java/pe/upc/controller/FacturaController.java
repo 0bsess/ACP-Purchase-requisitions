@@ -35,7 +35,7 @@ public class FacturaController implements Serializable {
 		try {
 			facturas = facturaBusiness.getAll();
 		} catch (Exception e) {
-			Message.messageError("Error Carga de pedidos :" + e.getMessage());
+			Message.messageError("Error Carga de facturas :" + e.getMessage());
 		}
 	}
 

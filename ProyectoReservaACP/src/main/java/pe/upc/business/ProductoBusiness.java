@@ -34,4 +34,8 @@ private static final long serialVersionUID = 4L;
 	public List<Producto> getProductosByName(String name) throws Exception{
 		return productoRepository.findByName(name);
 	}
+	
+	public List<Producto> validar(String nombre) throws Exception {
+		return productoRepository.ListarProductoxNombre(nombre);
+	}
 }

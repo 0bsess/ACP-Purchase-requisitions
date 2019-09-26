@@ -39,7 +39,7 @@ public class CiudadRepository implements Serializable{
 	public List<Ciudad> ListarCiudadxNombre(String nombre) throws Exception {
 		List<Ciudad> ciudad = new ArrayList<>();
 
-		TypedQuery<Ciudad> query = em.createQuery("FROM Ciudad p WHERE p.nombre LIKE ?1", Ciudad.class);
+		TypedQuery<Ciudad> query = em.createQuery("FROM Ciudad p WHERE p.nameCiudad LIKE ?1", Ciudad.class);
 		query.setParameter(1, "%" + nombre + "%");
 		ciudad = query.getResultList();
 

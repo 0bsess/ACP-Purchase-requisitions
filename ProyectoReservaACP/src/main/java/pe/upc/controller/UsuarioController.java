@@ -61,7 +61,34 @@ public class UsuarioController  implements Serializable {
 		return "list.xhtml";
 	}
 
+	
 	public String saveUsuario() {
+	String view = "";
+	try {
+
+		if (usuario.getIdUsuario() != null) {
+			usuarioBusiness.update(usuario);
+			Message.messageInfo("Registro actualizado exitosamente");
+		} else {
+			if(usuarioBusiness.validar(usuario.getIdDocumento())==null)
+			{
+				usuarioBusiness.insert(usuario);
+			Message.messageInfo("Registro guardado exitosamente");
+			}
+			else {
+				Message.messageInfo("El usuario ya se encuentra registrado");
+			}
+		}
+		this.getAllUsuarios();
+		resetForm();
+		view = "list";
+	} catch (Exception e) {
+		Message.messageError("Error usuario :" + e.getStackTrace());
+	}
+
+	return view;
+}
+	/*public String saveUsuario() {
 		String view = "";
 		try {
 
@@ -81,7 +108,7 @@ public class UsuarioController  implements Serializable {
 		}
 
 		return view;
-	}
+	}*/
 
 	public String editUsuario() {
 		String view = "";
