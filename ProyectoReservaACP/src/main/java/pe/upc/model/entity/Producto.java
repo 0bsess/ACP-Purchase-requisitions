@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Positive;
 
 @Entity
 @Table(name = "producto")
@@ -16,10 +18,17 @@ public class Producto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProducto;
 	private String nameProducto;
-	//@(message="seleccione una fecha mayor")
+	
+	@Future
 	private Date dayReabastecimiento;
+	
+	@Positive
 	private int quantityStock;
+	
+	@Positive
 	private double moneyPrecio;
+	
+	@Positive
 	private int quantityReserva;
 	
 	public Long getIdProducto() {

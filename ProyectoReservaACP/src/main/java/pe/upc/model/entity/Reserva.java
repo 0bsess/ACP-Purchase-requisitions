@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 
 @Entity
 @Table(name = "reserva")
@@ -17,6 +19,7 @@ public class Reserva {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idReserva;
 	
+	@FutureOrPresent
 	private Date dayReserva;
 	
 	@ManyToOne
@@ -27,10 +30,14 @@ public class Reserva {
 	@JoinColumn(name = "idCiudad", nullable = false)
 	private Ciudad ciudad;
 	
-//completado por el sistema o admin
+	@Future
 	private Date dayLlegada;
+	
 	private boolean flagAnulado;
+	
+	@Future
 	private Date dayVencimiento;
+	
 	public Long getIdReserva() {
 		return idReserva;
 	}
