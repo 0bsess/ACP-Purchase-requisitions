@@ -70,7 +70,7 @@ public class PedidoController implements Serializable {
 			resetForm();
 			view = "list";
 		} catch (Exception e) {
-			Message.messageError("Error Usuario :" + e.getStackTrace());
+			Message.messageError("Error Pedido :" + e.getStackTrace());
 		}
 
 		return view;

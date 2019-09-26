@@ -9,7 +9,6 @@ import javax.inject.Named;
 import org.primefaces.event.SelectEvent;
 import pe.upc.business.FacturaBusiness;
 import pe.upc.model.entity.Factura;
-import pe.upc.model.entity.Pedido;
 import pe.upc.util.Message;
 
 @Named
