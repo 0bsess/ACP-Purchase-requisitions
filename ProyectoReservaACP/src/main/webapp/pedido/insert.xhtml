@@ -25,7 +25,7 @@
 					
 				<p:panelGrid id="panGridUsuario" columns="2" style="width:100%">
 						
-					<p:outputLabel value="Reserva" for="cboReserva" />				
+					<p:outputLabel value="Reserva: " for="cboReserva" />				
 					<p:selectOneMenu id="cboReserva" required="true" effect="drop"
 						value="#{pedidoController.pedido.reserva}"
 						converter="omnifaces.SelectItemsConverter">
@@ -36,7 +36,7 @@
 							itemValue="#{reserva}" />
 					</p:selectOneMenu>
 					
-					<p:outputLabel value="Producto" for="cboProducto" />				
+					<p:outputLabel value="Producto: " for="cboProducto" />				
 					<p:selectOneMenu id="cboProducto" required="true" effect="drop"
 						value="#{pedidoController.pedido.producto}"
 						converter="omnifaces.SelectItemsConverter">
@@ -47,7 +47,7 @@
 							itemValue="#{producto}" />
 					</p:selectOneMenu>
 					
-						<p:outputLabel value="Peso:" for="txtPeso" />					
+						<p:outputLabel value="Peso (en Toneladas):" for="txtPeso" />					
 					<p:inputText id="txtPeso" required="true" maxlength="45"
 						value="#{pedidoController.pedido.quantityPeso}" />
 					

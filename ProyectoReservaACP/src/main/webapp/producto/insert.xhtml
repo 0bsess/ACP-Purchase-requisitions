@@ -31,19 +31,19 @@
 					<p:inputText id="txtName" required="true" maxlength="45"
 						value="#{productoController.product.nameProducto}" />
 									
-					<p:outputLabel value="Precio" for="txtPrecio" />
+					<p:outputLabel value="Precio (en dólares):" for="txtPrecio" />
 					<p:inputText id="txtPrecio" required="true" maxlength="45"
 						value="#{productoController.product.moneyPrecio}" />
 						
-					<p:outputLabel value="Dia de reabastecimiento" for="txtDay" />
+					<p:outputLabel value="Fecha de reabastecimiento:" for="txtDay" />
 					<p:calendar id="txtDay" required="true" maxlength="45"
 						value="#{productoController.product.dayReabastecimiento}" />
 						
-					<p:outputLabel value="Stock" for="txtStock" />
+					<p:outputLabel value="Stock (en Toneladas):" for="txtStock" />
 					<p:inputText id="txtStock" required="true" maxlength="45"
 						value="#{productoController.product.quantityStock}" />
 						
-					<p:outputLabel value="Stock reserva" for="txtStockR" />
+					<p:outputLabel value="Stock reserado (en Toneladas):" for="txtStockR" />
 					<p:inputText id="txtStockR" required="true" maxlength="45"
 						value="#{productoController.product.quantityReserva}" />
 						

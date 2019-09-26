@@ -27,7 +27,7 @@
 
 
 				<p:panelGrid id="panGridReserva" columns="2" style="width:100%">
-					<p:outputLabel value="DayReserva:" for="txtDay" />
+					<p:outputLabel value="Fecha de Reserva:" for="txtDay" />
 					<p:calendar id="txtDay" required="true" maxlength="45"
 						value="#{reservaController.reserva.dayReserva}" />
 					
@@ -45,7 +45,7 @@
 										
 						
 						
-					<p:outputLabel value="Ciudad " for="cboCiudad" />
+					<p:outputLabel value="Ciudad: " for="cboCiudad" />
 					<p:selectOneMenu id="cboCiudad" required="true" effect="drop"
 						value="#{reservaController.reserva.ciudad}"
 						converter="omnifaces.SelectItemsConverter">
@@ -57,15 +57,15 @@
 					</p:selectOneMenu>
 
 					
-					<p:outputLabel value="Llegada" for="txtLlegada" />
+					<p:outputLabel value="Fecha de llegada: " for="txtLlegada" />
 					<p:calendar id="txtLlegada" required="true" maxlength="45"
 						value="#{reservaController.reserva.dayLlegada}" />
 					
-					<p:outputLabel value="Vencimiento" for="txtVencimiento" />
+					<p:outputLabel value="Fecha de vencimiento:" for="txtVencimiento" />
 					<p:calendar id="txtVencimiento" required="true" maxlength="45"
 						value="#{reservaController.reserva.dayVencimiento}" />
 						
-					<p:outputLabel value="Anulado" for="txtAnulado" />
+					<p:outputLabel value="Anulado:" for="txtAnulado" />
 					<p:inputText id="txtAnulado" required="true" maxlength="45"
 						value="#{reservaController.reserva.flagAnulado}" />	
 											
